@@ -2,7 +2,7 @@
   "name": "cartographie",
   "productName": "Cartographie",
   "description": "Logiciel pour présenter des données cartographiques.",
-  "version": "1.1.0",
+  "version": "1.1.0-win-7-8",
   "author": "21 Pixels",
   "private": true,
   "main": "main.js",
@@ -20,6 +20,7 @@
     "package-linux": "electron-builder build --linux"
   },
   "build": {
+    "asar": false,
     "extraResources": [
       "./config/content.json"
     ],
@@ -53,7 +54,7 @@
     "@nuxtjs/tailwindcss": "6.12.1",
     "@types/eslint__js": "8.42.3",
     "@vueuse/core": "10.9.0",
-    "electron": "30.5.1",
+    "electron": "22.3.9",
     "electron-builder": "24.13.3",
     "electron-icon-maker": "0.0.5",
     "eslint-plugin-tailwindcss": "3.17.4",
