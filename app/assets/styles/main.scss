@@ -1,0 +1,119 @@
+@import "vue-toast-notification/dist/theme-default.css";
+
+html,
+body {
+  @apply text-[0.9vw];
+
+  #expo-map {
+    @apply w-screen h-screen;
+    .leaflet-container {
+      @apply text-[1rem];
+    }
+
+    .leaflet-touch .leaflet-control-layers,
+    .leaflet-touch .leaflet-bar {
+      @apply border-0 shadow rounded-xl overflow-hidden;
+    }
+
+    .leaflet-control-layers {
+      .leaflet-control-layers-toggle {
+        background-image: url("data:image/svg+xml,%3Csvg width='800px' height='800px' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg' aria-labelledby='layersIconTitle' stroke='%23000000' stroke-width='1' stroke-linecap='square' stroke-linejoin='miter' color='%23000000'%3E%3Ctitle id='layersIconTitle'%3ELayers%3C/title%3E%3Cpath d='M12 4L20 8.00004L12 12L4 8.00004L12 4Z'/%3E%3Cpath d='M20 12L12 16L4 12'/%3E%3Cpath d='M20 16L12 20L4 16'/%3E%3C/svg%3E");
+        background-size: 2vw;
+        @apply size-[2.75vw];
+      }
+
+      .leaflet-control-layers-list {
+        @apply p-6 min-w-[15vw];
+        .leaflet-control-layers-separator {
+          @apply hidden;
+        }
+
+        .leaflet-control-layers-overlays {
+          @apply text-lg flex flex-col-reverse;
+
+          label {
+            @apply py-1 cursor-pointer;
+
+            > span {
+              @apply my-1 flex gap-3 relative items-center;
+              input {
+                @apply hidden;
+              }
+
+              &:before {
+                content: '';
+                @apply block w-9 h-6 bg-gray-200 rounded-full;
+              }
+
+              &:after {
+                content: '';
+                @apply block rounded-full size-4 bg-white left-1 absolute top-1
+              }
+
+              &:has(input:checked):before {
+                @apply bg-gray-800;
+              }
+
+              &:has(input:checked):after {
+                @apply left-4;
+              }
+            }
+          }
+        }
+
+        .leaflet-control-layers-base {
+          @apply text-lg;
+          label {
+            @apply py-1 cursor-pointer;
+            input {
+              &[type=radio] {
+                @apply hidden;
+              }
+
+              &:checked + span {
+                @apply font-semibold;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .leaflet-popup-close-button {
+      @apply text-3xl text-gray-800 mr-4 mt-2 top-2 right-2;
+    }
+
+    h1 {
+      @apply text-2xl font-semibold;
+    }
+
+    h2 {
+      @apply text-xl font-semibold;
+    }
+
+    .leaflet-popup-content {
+      @apply m-8 text-[1rem] overflow-auto max-h-[75vh];
+      h1 {
+        @apply mb-6 text-xl;
+      }
+
+      hr {
+        @apply my-4;
+      }
+
+      p {
+        @apply m-0;
+      }
+
+      img {
+        @apply mt-4;
+      }
+    }
+  }
+
+  @import "form";
+
+  hr {
+    @apply my-4;
+  }
+}

@@ -1,0 +1,15 @@
+label {
+  @apply cursor-pointer block leading-6 text-gray-900;
+  strong {
+    @apply font-semibold;
+  }
+}
+
+textarea {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+textarea::-webkit-scrollbar {
+  display: none;
+}

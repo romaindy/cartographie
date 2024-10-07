@@ -1,0 +1,45 @@
+{
+  "title": "",
+  "map": {
+    "tilesUrl": "",
+    "overlays": [
+      {
+        "label": "",
+        "image": "",
+        "bounds": [
+          [
+          ],
+          [
+          ]
+        ]
+      }
+    ],
+    "maxBounds": [
+      [
+      ],
+      [
+      ]
+    ],
+    "initialZoom": 0,
+    "maxZoom": 18,
+    "minZoom": 0
+  },
+  "popups": {
+    "help": {
+      "title": "",
+      "content": ""
+    },
+    "credits": {
+      "title": "",
+      "content": ""
+    }
+  },
+  "layersGroup": [
+  ],
+  "layers": [
+  ],
+  "geoJSON": {
+    "type": "FeatureCollection",
+    "features": []
+  }
+}
