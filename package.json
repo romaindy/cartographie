@@ -2,7 +2,7 @@
   "name": "cartographie",
   "productName": "Cartographie",
   "description": "Logiciel pour présenter des données cartographiques.",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "21 Pixels",
   "private": true,
   "main": "main.js",
@@ -24,10 +24,10 @@
       "./config/content.json"
     ],
     "win": {
-      "icon": "app/public/favicon/icons/win/icon.ico"
+      "icon": "/app/public/favicon/icons/win/icon.ico"
     },
     "mac": {
-      "icon": "app/public/favicon/icons/mac/icon.icns",
+      "icon": "/app/public/favicon/icons/mac/icon.icns",
       "target": {
         "target": "default",
         "arch": "universal"
@@ -35,31 +35,31 @@
     }
   },
   "dependencies": {
-    "archiver": "^7.0.1",
-    "csv-parse": "^5.5.6",
-    "marked": "^12.0.2",
-    "nuxt": "^3.11.2",
-    "nuxt3-leaflet": "^1.0.12",
-    "slugify": "^1.6.6",
-    "vue": "^3.5.12",
-    "vue-json-csv": "^2.1.0",
-    "vue-router": "^4.3.2",
-    "vue-toast-notification": "^3.1.2"
+    "archiver": "7.0.1",
+    "csv-parse": "5.5.6",
+    "marked": "12.0.2",
+    "nuxt": "3.13.1",
+    "nuxt3-leaflet": "1.0.12",
+    "slugify": "1.6.6",
+    "vue": "3.5.12",
+    "vue-json-csv": "2.1.0",
+    "vue-router": "4.4.3",
+    "vue-toast-notification": "3.1.2"
   },
   "devDependencies": {
-    "@eslint/js": "^9.5.0",
-    "@nuxt/eslint": "^0.3.13",
-    "@nuxtjs/eslint-config-typescript": "^12.1.0",
-    "@nuxtjs/tailwindcss": "^6.12.0",
-    "@types/eslint__js": "^8.42.3",
-    "@vueuse/core": "^10.9.0",
-    "electron": "^30.0.6",
-    "electron-builder": "^24.13.3",
-    "electron-icon-maker": "^0.0.5",
-    "eslint-plugin-tailwindcss": "^3.17.4",
-    "sass": "^1.77.1",
-    "typescript": "^5.5.2",
-    "vite-plugin-electron": "^0.28.7",
-    "vite-plugin-electron-renderer": "^0.14.5"
+    "@eslint/js": "9.5.0",
+    "@nuxt/eslint": "0.3.13",
+    "@nuxtjs/eslint-config-typescript": "12.1.0",
+    "@nuxtjs/tailwindcss": "6.12.1",
+    "@types/eslint__js": "8.42.3",
+    "@vueuse/core": "10.9.0",
+    "electron": "30.5.1",
+    "electron-builder": "24.13.3",
+    "electron-icon-maker": "0.0.5",
+    "eslint-plugin-tailwindcss": "3.17.4",
+    "sass": "1.77.1",
+    "typescript": "5.5.2",
+    "vite-plugin-electron": "0.28.7",
+    "vite-plugin-electron-renderer": "0.14.5"
   }
 }
