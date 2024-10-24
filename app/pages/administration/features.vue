@@ -1,24 +1,24 @@
-<script setup lang="ts">
-const { content } = defineProps<{
-  content: Content
-}>()
-defineEmits(['refresh'])
+<script setup
+        lang="ts"
+>
+const content = defineModel<Content>('content')
+defineModel<Content>('initialContent')
 
-if (content.layers.length === 1) {
-  content.geoJSON.features = content.geoJSON.features.map(
+if (content.value.layers.length === 1) {
+  content.value.geoJSON.features = content.value.geoJSON.features.map(
     (feature: GeoJsonFeature) => {
-      feature.properties.layer = content.layers[0].slug
+      feature.properties.layer = content.value.layers[0].slug
       return feature
     },
   )
 }
 
 const deleteFeature = (index: number) => {
-  content.geoJSON.features.splice(index, 1)
+  content.value.geoJSON.features.splice(index, 1)
 }
 
 const addFeature = () => {
-  content.geoJSON.features.push({
+  content.value.geoJSON.features.push({
     type: 'Feature',
     properties: {
       name: ' ',
@@ -45,7 +45,7 @@ const addFeature = () => {
     class="my-4 rounded bg-zinc-50 p-8"
   >
     <AdminFeature
-      :feature="feature"
+      v-model:feature="content.geoJSON.features[index]"
       :index="index"
       :layers="content.layers"
       @delete-feature="deleteFeature"

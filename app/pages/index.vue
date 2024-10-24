@@ -47,9 +47,9 @@ const mapReady = () => {
 
 const getLayerGroupLegends = (layerGroup: LayerGroup) => {
   let html = `<div class="layer-group-name my-3 flex gap-2 items-center">${
-      layerGroup.label
+    layerGroup.label
   } ${
-      layerGroup.description ? `<div id="information-${layerGroup.slug}"></div>` : null
+    layerGroup.description ? `<div id="information-${layerGroup.slug}"></div>` : null
   }</div>`
 
   content.layers

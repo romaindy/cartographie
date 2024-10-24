@@ -1,19 +1,17 @@
 <script setup
         lang="ts"
 >
-const { content } = defineProps<{
-  content: Content
-}>()
-defineEmits(['refresh'])
+const content = defineModel<Content>('content')
+defineModel<Content>('initialContent')
 
-const hasTiles = ref(!!content.map.tiles)
+const hasTiles = ref(!!content.value.map.tiles)
 
 const addOverlay = () => {
-  content.map.overlays.push({ bounds: [[], []], image: '', label: '' })
+  content.value.map.overlays.push({ showInControls: false, bounds: [[], []], image: '', label: '' })
 }
 
 const deleteOverlay = (index: number) => {
-  content.map.overlays.splice(index, 1)
+  content.value.map.overlays.splice(index, 1)
 }
 </script>
 

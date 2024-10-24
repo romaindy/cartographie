@@ -1,11 +1,9 @@
 <script setup lang="ts">
-const { content } = defineProps<{
-  content: Content
-}>()
-defineEmits(['refresh'])
+const content = defineModel<Content>('content')
+defineModel<Content>('initialContent')
 
 const addLayer = () => {
-  content.layers.push({
+  content.value.layers.push({
     label: '',
     slug: '',
     type: 'Point',
@@ -16,12 +14,12 @@ const addLayer = () => {
 
 const deleteLayer = (slug: string) => {
   // Remove the layer.
-  content.layers = content.layers.filter(
+  content.value.layers = content.value.layers.filter(
     (layer: Layer) => layer.slug !== slug,
   )
 
   // Remove the deleted layer from features.
-  content.geoJSON.features = content.geoJSON.features.map(
+  content.value.geoJSON.features = content.value.geoJSON.features.map(
     (feature: GeoJsonFeature) => {
       if (feature.properties.layer === slug) {
         feature.properties.layer = ''
@@ -47,9 +45,9 @@ const deleteLayer = (slug: string) => {
     class="my-4 rounded bg-zinc-50 p-6"
   >
     <AdminLayer
+      v-model:content="content"
       :layer="layer"
       :index="index"
-      :content="content"
       @delete-layer="deleteLayer"
     />
   </div>

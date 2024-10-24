@@ -3,11 +3,13 @@
 >
 import slugify from 'slugify'
 
-const { layer, content, index } = defineProps<{
+const { layer, index } = defineProps<{
   layer: Layer
-  content: Content
   index: number
 }>()
+const content = defineModel<Content>('content')
+defineModel<Content>('initialContent')
+
 const emit = defineEmits(['deleteLayer'])
 
 const deleteLayer = (slug: string) => {
@@ -21,7 +23,7 @@ if (layer.type === 'Point' && !layer.imageSize) {
 const updateSlug = () => {
   const oldSlug = layer.slug
   layer.slug = slugify(layer.label, { lower: true })
-  content.geoJSON.features.map((feature: GeoJsonFeature) => {
+  content.value.geoJSON.features.map((feature: GeoJsonFeature) => {
     if (feature.properties.layer === oldSlug) {
       feature.properties.layer = layer.slug
     }

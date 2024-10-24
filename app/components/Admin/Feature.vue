@@ -1,23 +1,22 @@
 <script setup lang="ts">
-const { feature, layers, index } = defineProps<{
-  feature: GeoJsonFeature
+const { layers, index } = defineProps<{
   layers: Layer[]
   index: number
 }>()
-
+const feature = defineModel<GeoJsonFeature>('feature')
 const emit = defineEmits(['deleteFeature'])
 
 const showDetails = ref(false)
 
 const onLayerChange = () => {
-  const type = layers.find(layer => layer.slug === feature.properties.layer)?.type
-  if (feature.geometry.type === 'LineString' && type === 'Point') {
-    feature.geometry.coordinates = feature.geometry.coordinates[0]
+  const type = layers.find(layer => layer.slug === feature.value.properties.layer)?.type
+  if (feature.value.geometry.type === 'LineString' && type === 'Point') {
+    feature.value.geometry.coordinates = feature.value.geometry.coordinates[0]
   }
-  else if (feature.geometry.type === 'Point' && type === 'LineString') {
-    feature.geometry.coordinates = [feature.geometry.coordinates as number[]]
+  else if (feature.value.geometry.type === 'Point' && type === 'LineString') {
+    feature.value.geometry.coordinates = [feature.value.geometry.coordinates as number[]]
   }
-  feature.geometry.type = type
+  feature.value.geometry.type = type
   console.log(feature)
 }
 const deleteFeature = (index: number) => {

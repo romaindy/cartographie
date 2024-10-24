@@ -1,3 +1,4 @@
+@use "form";
 @import "vue-toast-notification/dist/theme-default.css";
 
 html,
@@ -111,7 +112,6 @@ body {
     }
   }
 
-  @import "form";
 
   hr {
     @apply my-4;

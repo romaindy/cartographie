@@ -3,7 +3,9 @@
 >
 import defaultContent from '../../../config/content.json'
 
-const emit = defineEmits(['refresh'])
+const content = defineModel<Content>('content')
+const initialContent = defineModel<Content>('initialContent')
+
 const confirmation = ref('')
 const { $toast } = useNuxtApp()
 
@@ -18,7 +20,8 @@ const reset = async () => {
       method: 'post',
       body: defaultContent,
     })
-    emit('refresh')
+    content.value = { ...defaultContent }
+    initialContent.value = JSON.parse(JSON.stringify(defaultContent))
     $toast.success('L\'application a bien été ré-initialisée.')
   }
 }

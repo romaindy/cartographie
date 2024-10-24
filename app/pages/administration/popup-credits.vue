@@ -2,10 +2,8 @@
 import { useTextareaAutosize } from '@vueuse/core'
 
 const { textarea } = useTextareaAutosize()
-const { content } = defineProps<{
-  content: Content
-}>()
-defineEmits(['refresh'])
+const content = defineModel<Content>('content')
+defineModel<Content>('initialContent')
 </script>
 
 <template>

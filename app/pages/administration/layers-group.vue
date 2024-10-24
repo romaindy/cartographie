@@ -3,23 +3,21 @@
 >
 import slugify from 'slugify'
 
-const { content } = defineProps<{
-  content: Content
-}>()
-defineEmits(['refresh'])
+const content = defineModel<Content>('content')
+defineModel<Content>('initialContent')
 
 const addLayerGroup = () => {
-  content.layersGroup.push({
+  content.value.layersGroup.push({
     label: '',
     slug: '',
   })
 }
 const deleteLayerGroup = (slug: string) => {
-  const index = content.layersGroup.findIndex((layerGroup: LayerGroup) => layerGroup.slug === slug)
-  content.layersGroup.splice(index, 1)
+  const index = content.value.layersGroup.findIndex((layerGroup: LayerGroup) => layerGroup.slug === slug)
+  content.value.layersGroup.splice(index, 1)
 
   // Remove the deleted layerGroup from the layers.
-  content.layers = content.layers.map(
+  content.value.layers = content.value.layers.map(
     (layer: Layer) => {
       if (layer.layerGroup === slug) {
         layer.layerGroup = ''
@@ -31,7 +29,7 @@ const deleteLayerGroup = (slug: string) => {
 const updateSlug = (layersGroup: LayerGroup) => {
   const oldSlug = layersGroup.slug
   layersGroup.slug = slugify(layersGroup.label, { lower: true })
-  content.layers.map((layer: Layer) => {
+  content.value.layers.map((layer: Layer) => {
     if (layer.layerGroup === oldSlug) {
       layer.layerGroup = layersGroup.slug
     }

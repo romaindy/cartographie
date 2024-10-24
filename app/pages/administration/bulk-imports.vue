@@ -3,14 +3,12 @@
 >
 import JsonCSV from 'vue-json-csv'
 
-const { content } = defineProps<{
-  content: Content
-}>()
-const emit = defineEmits(['refresh'])
+const content = defineModel<Content>('content')
+const initialContent = defineModel<Content>('initialContent')
 
 const format = ref('')
 const getLayerBySlug = (slug: string) => {
-  return content.layers.find(
+  return content.value.layers.find(
     (layer: Layer) => layer.slug === slug,
   )
 }
@@ -20,7 +18,7 @@ const getLayerLayersGroup = (layerSlug: string): LayerGroup | null => {
   if (!layer) {
     return
   }
-  return content.layersGroup.find(
+  return content.value.layersGroup.find(
     (layerGroup: LayerGroup) => layerGroup.slug === layer.layerGroup,
   )
 }
@@ -37,7 +35,7 @@ const exportData = computed(() => {
       'Image de la popup',
     ],
   ]
-  content.geoJSON.features.forEach(
+  content.value.geoJSON.features.forEach(
     ({ geometry, properties }: GeoJsonFeature) => {
       csv.push([
         geometry.type,
@@ -54,7 +52,9 @@ const exportData = computed(() => {
 })
 
 const importData = async () => {
-  emit('refresh')
+  const _content = await $fetch('/api/content')
+  initialContent.value = JSON.parse(JSON.stringify(_content))
+  content.value = { ..._content }
 }
 </script>
 

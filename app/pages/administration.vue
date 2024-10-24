@@ -20,8 +20,8 @@ async function submit() {
 }
 
 const refresh = async () => {
-  const _content = await $fetch('/api/content')
-  content.value = { ..._content }
+  if (!hasChanged.value) return
+  content.value = await $fetch('/api/content')
 }
 
 const tabs = [
@@ -99,8 +99,8 @@ const hasChanged = computed(() => {
     @submit.prevent="submit()"
   >
     <NuxtPage
-      :content="content"
-      @refresh="refresh()"
+      v-model:initialContent="initialContent"
+      v-model:content="content"
     />
 
     <div class="fixed bottom-0 left-0 w-full border-t bg-white">
